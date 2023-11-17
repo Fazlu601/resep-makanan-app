@@ -11,6 +11,7 @@ const MySwal = withReactContent(Swal);
 function Register() {
     const {setSession} = useContext(AuthSessionContext);
     const navigate = useNavigate();
+    const [error, setError] = useState(null);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -33,18 +34,14 @@ function Register() {
                 navigate('/');
             }
         } ).catch( err => {
-            MySwal.fire({
-                title: 'Registrasi gagal!',
-                icon: 'warning',
-                text: err
-            });
+            console.log(err);
         } );
     }
 
 return (
     <main className='container-fluid bg-light py-4' >
     <div className="row">
-        <div className="card col-6 mx-auto">
+        <div className="card col-sm-10 col-md-7 col-lg-6  mx-auto">
             <div className="card-body p-4">
                 <h5 className='fw-bold text-center my-4'>DAFTAR AKUN</h5>
                 <form onSubmit={handleRegister}>

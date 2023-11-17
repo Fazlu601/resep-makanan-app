@@ -14,6 +14,7 @@ const MySwal = withReactContent(Swal);
 function CreateRecipe() {
     const {session} = useContext(AuthSessionContext);
     const navigate = useNavigate();
+    const [error, setError] = useState(null);
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
     const [pict, setPict] = useState('');
@@ -59,8 +60,9 @@ function CreateRecipe() {
                 });
                 navigate('/');
             }
-        } ).catch( err => {
-            console.log(err);
+        } ).catch( error => {
+            console.log();
+            setError(error.response.data.errors || 'Terjadi kesalahan');
         } );
     }
 
@@ -81,12 +83,18 @@ function CreateRecipe() {
                     <h5 className='text-primary'>Tulis Resepmu...</h5>
                     <div className="form-group mb-3">
                         <label htmlFor="title">Judul</label>
-                        <input type="text" onChange={(e) => setTitle(e.target.value)} required id="title" className="form-control" />
+                        <input type="text" onChange={(e) => setTitle(e.target.value)} required id="title"  className={`form-control ${error && error.judul ? 'is-invalid' : ''}`} />
+                        { error && error.judul &&(
+                            <div className='invalid-feedback'>{error.judul}</div>
+                        ) }
                     </div>
                     <div className="form-group mb-3">
                         <label htmlFor="title">Deskripsi</label>
-                        <textarea cols='3' onChange={(e) => setDesc(e.target.value)} required rows='3' id="title" className="form-control" >
+                        <textarea cols='3' onChange={(e) => setDesc(e.target.value)} required rows='3' id="title" className={`form-control ${error && error.deskripsi ? 'is-invalid' : ''}`} >
                         </textarea>
+                        { error && error.deskripsi &&(
+                            <div className='invalid-feedback'>{error.deskripsi}</div>
+                        ) }
                     </div>
                     <div className="form-group mb-3">
                         <label htmlFor="">Bahan - Bahan</label>
@@ -98,7 +106,10 @@ function CreateRecipe() {
                     </div>
                     <div className="form-group mb-3">
                         <label htmlFor="foto">Upload Foto Masakan</label>
-                        <input type="file" required  onChange={(e) => setPict(e.target.files[0])} id="foto" className="form-control" />
+                        <input type="file" required  onChange={(e) => setPict(e.target.files[0])} id="foto" className={`form-control ${error && error.foto ? 'is-invalid' : ''}`} />
+                        { error && error.foto &&(
+                            <div className='invalid-feedback'>{error.foto}</div>
+                        ) }
                     </div>
                     <div className="form-group">
                         <button type="submit" className="btn btn-submit-recipe text-white w-100">Terbitkan Resep</button>

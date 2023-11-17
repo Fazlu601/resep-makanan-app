@@ -11,6 +11,7 @@ const MySwal = withReactContent(Swal);
 function Login() {
     const {setSession} = useContext(AuthSessionContext);
     const navigate = useNavigate();
+    const [error, setError] = useState(null);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -27,12 +28,8 @@ function Login() {
                 setSession(data)
                 navigate('/');
             }
-        } ).catch( err => {
-            MySwal.fire({
-                title: 'Login gagal!',
-                icon: 'warning',
-                text: err
-            });
+        } ).catch( error => {
+            setError(error.response.data.message);
         } );
     }
 
@@ -44,8 +41,9 @@ return (
                 <div className="card-body p-4">
                     <h5 className='fw-bold text-center my-4'>SILAHKAN LOGIN TERLEBIH DAHULU</h5>
                     <form onSubmit={handleLogin}>
+                        { error && <div className='alert alert-danger'>{error}</div>}
                         <div className="form-floating mb-3">
-                            <input type="email" onChange={(e) => setEmail(e.target.value)} className="form-control" id="floatingInputLogin" placeholder="Alamat Email"/>
+                            <input type="email" onChange={(e) => setEmail(e.target.value)} className={`form-control ${error ? 'is-invalid' : ''}`}id="floatingInputLogin" placeholder="Alamat Email"/>
                             <label htmlFor="floatingInputLogin">Alamat Email</label>
                         </div>
                         <div className="form-floating mb-3">
