@@ -50,7 +50,7 @@ function CardRecipe({dataRecipe}) {
                     <button type="button" className='btn btn-primary w-100 rounded-pill' disabled>Sudah Disukai</button>
                 ) : (
                 <form onSubmit={(e) => handleLike(dataRecipe.id, e)}>
-                    <button type="submit" className='btn btn-primary w-100 rounded-pill'>Suka</button>
+                    <button type="submit" className='btn btn-secondary text-dark fw-medium w-100 rounded-pill'>Suka</button>
                 </form>
                 )
             }

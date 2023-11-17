@@ -6,7 +6,7 @@ import {API_URL} from '../api/api';
 import { AuthSessionContext } from '../context/AuthProvider';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import InputComponent from '../components/input/InputComponent';
 
 const MySwal = withReactContent(Swal);
@@ -68,16 +68,24 @@ function CreateRecipe() {
     <>
         <NavBar/>
         <main className='container py-4'>
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item" aria-current="page">
+                            <NavLink to='/'>Beranda</NavLink>
+                        </li>
+                        <li className="breadcrumb-item active">Buat Resep</li>
+                    </ol>
+                </nav>
             <div className="row col-lg-8 col-md-10 mx-auto">
                 <form onSubmit={handleCreateRecipe}>
                     <h5 className='text-primary'>Tulis Resepmu...</h5>
                     <div className="form-group mb-3">
                         <label htmlFor="title">Judul</label>
-                        <input type="text" onChange={(e) => setTitle(e.target.value)} id="title" className="form-control" />
+                        <input type="text" onChange={(e) => setTitle(e.target.value)} required id="title" className="form-control" />
                     </div>
                     <div className="form-group mb-3">
                         <label htmlFor="title">Deskripsi</label>
-                        <textarea cols='3' onChange={(e) => setDesc(e.target.value)} rows='3' id="title" className="form-control" >
+                        <textarea cols='3' onChange={(e) => setDesc(e.target.value)} required rows='3' id="title" className="form-control" >
                         </textarea>
                     </div>
                     <div className="form-group mb-3">
@@ -90,10 +98,10 @@ function CreateRecipe() {
                     </div>
                     <div className="form-group mb-3">
                         <label htmlFor="foto">Upload Foto Masakan</label>
-                        <input type="file"  onChange={(e) => setPict(e.target.files[0])} id="foto" className="form-control" />
+                        <input type="file" required  onChange={(e) => setPict(e.target.files[0])} id="foto" className="form-control" />
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primary w-100">Terbitkan Resep</button>
+                        <button type="submit" className="btn btn-submit-recipe text-white w-100">Terbitkan Resep</button>
                     </div>
                 </form>
             </div>

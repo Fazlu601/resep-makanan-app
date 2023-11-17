@@ -44,7 +44,7 @@ function Home() {
                 <>
                   <NavBar/>
                     <main className='container'>
-                        <h5 className='fw-bold ms-5 my-3'>Resep Terbaru</h5>
+                        <h5 className='fw-medium lh-md ms-5 my-3'>Resep Terbaru</h5>
                         <ResepWrapper data={items} />
                     </main>
                   <Footer/>

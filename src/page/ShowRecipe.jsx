@@ -41,7 +41,7 @@ function ShowRecipe() {
                         <li className="breadcrumb-item" aria-current="page">
                             <NavLink to='/'>Beranda</NavLink>
                         </li>
-                        <li className="breadcrumb-item active">Home</li>
+                        <li className="breadcrumb-item active">Lihat Resep</li>
                     </ol>
                 </nav>
                     <article className="col-sm-12 col-md-10 col-lg-8 mx-auto p-3">

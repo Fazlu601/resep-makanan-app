@@ -14,7 +14,7 @@ function NavBar() {
             title: 'Yakin ingin keluar?',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
+            confirmButtonColor: '#547794',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Ya, keluar!'
         }).then( result => {

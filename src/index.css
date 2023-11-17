@@ -1,6 +1,8 @@
 :root {
-    --primary-color : purple;
+    --primary-color : #547794;
+    --secondary-color : #C2C9CD;
     --light-color : #ffffff;
+    --gray-color : #547794;
 }
 
 .bg-primary {
@@ -8,8 +10,37 @@
     color: var(--light-color) !important;
 }
 
+.bg-secondary {
+    background-color: var(--secondary-color) !important;
+}
+
 .bg-light {
     background-color: var(--light-color) !important;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.btn-secondary {
+    background-color: var(--primary-color) !important;
+    border:none;
+}
+.btn-secondary {
+    background-color: var(--secondary-color) !important;
+    border:none;
+}
+.btn-secondary:hover {
+    box-shadow: 0px 2px 10px var(--primary-color);
+}
+
+.btn-submit-recipe {
+  background-color: var(--gray-color);
+}
+
+.btn-submit-recipe:hover {
+  box-shadow: 0px 4px 10px var(--secondary-color);
+  background-color: var(--gray-color);
 }
 
 .dot-spinner {
