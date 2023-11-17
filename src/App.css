@@ -1,0 +1,30 @@
+* {
+    text-decoration: none !important;
+}
+
+.navbar {
+    padding: 10px 200px !important;
+}
+
+.overflow-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Jumlah baris yang ingin Anda tampilkan */
+    -webkit-box-orient: vertical;
+}
+
+.null-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 80vh;
+}
+
+
+@media screen and (max-width: 990px) {
+    .navbar {
+        padding: 10px 30px !important;
+    }
+}
