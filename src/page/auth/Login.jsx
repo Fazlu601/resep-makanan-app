@@ -3,10 +3,6 @@ import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthSessionContext } from '../../context/AuthProvider'
 import {API_URL} from '../../api/api'
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content'
-
-const MySwal = withReactContent(Swal);
 
 function Login() {
     const {setSession} = useContext(AuthSessionContext);
@@ -25,10 +21,11 @@ function Login() {
             const data = res.data;  
             if(data) {
                 localStorage.setItem('TOKEN', JSON.stringify(data.token));
-                setSession(data)
+                setSession(data.user)
                 navigate('/');
             }
         } ).catch( error => {
+            console.log(error);
             setError(error.response.data.message);
         } );
     }

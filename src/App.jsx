@@ -29,7 +29,7 @@ function App() {
           const data = res.data;
           setSession(data);
           setIsLoading(false);
-        } );
+        } ).catch( err => console.log(err) );
       }else {
         setIsLoading(false);
         navigate('/auth/login');

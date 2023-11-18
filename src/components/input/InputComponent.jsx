@@ -6,12 +6,9 @@ const InputComponent = ({ labelButton, setState }) => {
 
   const handleChange = (e, index) => {
     const newItem = e.target.value;
-    // Mengupdate nilai di posisi tertentu pada array inputList
     const newList = [...inputList];
     newList[index] = newItem;
     setInputList(newList);
-
-    // Mengirim seluruh array inputList ke parent component melalui prop setState
     setState(newList);
   };
 

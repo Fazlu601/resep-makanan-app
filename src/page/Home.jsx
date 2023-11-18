@@ -34,6 +34,7 @@ function Home() {
     }else {
         navigate('/auth/login');
     }
+    console.log(session);
   }, [] );
 
    return (

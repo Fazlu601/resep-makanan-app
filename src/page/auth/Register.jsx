@@ -33,8 +33,9 @@ function Register() {
                 console.log(data);
                 navigate('/');
             }
-        } ).catch( err => {
-            console.log(err);
+        } ).catch( error => {
+            console.log(error);
+            setError(error.response.data.message);
         } );
     }
 
@@ -44,6 +45,9 @@ return (
         <div className="card col-sm-10 col-md-7 col-lg-6  mx-auto">
             <div className="card-body p-4">
                 <h5 className='fw-bold text-center my-4'>DAFTAR AKUN</h5>
+                { error && (
+                    <div className="alert alert-danger">{error}</div>
+                ) }
                 <form onSubmit={handleRegister}>
                     <div className="form-floating mb-3">
                         <input type="text" onChange={(e) => setName(e.target.value)} className="form-control" value={name} id="floatingInput" placeholder="Nama Lengkap"/>
@@ -56,10 +60,12 @@ return (
                     <div className="form-floating mb-3">
                         <input type="password" onChange={(e) => setPassword(e.target.value)} className="form-control" value={password} id="floatingPassword" placeholder="Password"/>
                         <label htmlFor="floatingPassword">Password</label>
+                    <small>Panjang minimal 8 karakter</small>
                     </div>
                     <div className="form-floating mb-3">
                         <input type="password" onChange={(e) => setPassword_confirmation(e.target.value)} className="form-control" value={password_confirmation} id="floatingPassword_confirmation" placeholder="Konfirmasi Password"/>
                         <label htmlFor="floatingPassword_confirmation">Konfirmasi Password</label>
+                        <small>Konfirmasi password harus sama dengan password</small>
                     </div>
                     <div className="form-group">
                         <button type="submit" className="btn btn-primary rounded-pill w-100">Daftar</button>

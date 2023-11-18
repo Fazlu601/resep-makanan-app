@@ -43,7 +43,7 @@ function CreateRecipe() {
         formData.append('bahan', JSON.stringify(newRecipe));
         formData.append('langkah', JSON.stringify(newStep));
         formData.append('foto', pict);
-
+        console.log(userID);
         const token = localStorage.getItem('TOKEN');
         const tokenParse = JSON.parse(token);
         axios.post(`${API_URL}resep-makanan`, formData, {
@@ -61,7 +61,7 @@ function CreateRecipe() {
                 navigate('/');
             }
         } ).catch( error => {
-            console.log();
+            console.log(error);
             setError(error.response.data.errors || 'Terjadi kesalahan');
         } );
     }
